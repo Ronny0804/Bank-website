@@ -10,7 +10,7 @@ const Hero = () => {
           <h1>An easier <br/> Responsile <br/> <span>Banking</span></h1>
           <p>Saving and investing are made simple.</p>
           <div className="btns">
-            <button>Know More</button>
+            <button>Get Started</button>
             <Link to='/emi-calculator'><button>EMI</button></Link>
             
           </div>

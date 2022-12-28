@@ -5,7 +5,7 @@ import { AiFillEdit } from "react-icons/ai";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import Header from "../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../actions/auth";
 import Payment from "../components/Payment";
 import axios from "axios";
@@ -82,7 +82,6 @@ const Admin = () => {
     setDeduction("");
     setInterest("");
     setInstall("");
-    fetchSupplierList()
   };
   useEffect(() => {
     fetchSupplierList();
@@ -150,21 +149,11 @@ const Admin = () => {
    if(userId==="admin@123"&&adminPassword==="admin@123")  setShowAdmin(true)
    
   }
-
-  const handleAddNewEntry=()=>{
-    setUserName("");
-    setMonth("");
-    setBalance("");
-    setDeduction("");
-    setInterest("");
-    setInstall("");
-    setYear("")
-  }
   
   return (
     <>
     <Header />
-    {!adminuser?(<div className="signup-page" >
+    {!adminuser?(<div className="signup-page">
         <div className="signup">
          <form onSubmit={onSubmit}>
          <input type={"text"} onChange={(e)=>setUserId(e.target.value)} placeholder="Enter user name"/>
@@ -176,7 +165,7 @@ const Admin = () => {
          </div>
         </div>
     </div>):(
-      <div className="container" style={{marginTop:"7rem"}}>
+      <div className="container my-5">
         <div className="my-5 d-flex justify-content-start align-items-between">
         <ReactHTMLTableToExcel
           id="test-table-xls-button"
@@ -188,8 +177,6 @@ const Admin = () => {
           onClick={()=>console.log("clicked")}
         />
   <Payment />
-  
-  <div style={{marginTop:"-2rem",marginLeft:"10px",display:"flex", alignItems:"center",justifyContet:"center"}}>
         <button onClick={()=>{
           dispatch(logout())
            navigate("/")
@@ -200,12 +187,11 @@ const Admin = () => {
           data-bs-toggle="modal"
           data-bs-target="#exampleModal2"
           styles={{width: '200px', height: '50px'}}
-          onClick={handleAddNewEntry}
+          onClick={() => {}}
         >
           <AiFillEdit color="black" size="20" />
-          ADD NEW ENTR
+          ADD NEW ENTRY
         </button>
-        </div>
         <div className=" ms-5 d-flex flex-row justify-content-center align-items-center">
         <label for="usernamelist" class="form-label">
                     USERS : &nbsp;
@@ -377,7 +363,7 @@ const Admin = () => {
           </div>
         </div>
         {/* add  new entry section ends here */}
-        <Link className="btn btn-primary my-2" to='/admin/shareholder'>Shareholder</Link>
+
         <table id="table-to-xls" className="table table-bordered">
           <thead>
             <tr className="table-primary">

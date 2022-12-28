@@ -4,7 +4,7 @@ const Message = ({msg,showModal,type,closeModal}) => {
         <div className={`black-scree ${showModal&&'show'}`}>
             <div className='message-box'>
               
-              <p className={type}>{msg==="completed"?"Pan is valid":"Pan card is  not valid"}</p>
+              <p className={type}>{msg===undefined?"uid is not valid":"valid"}</p>
               <button onClick={()=>closeModal(false)}>Ok</button>
             </div>
         </div>

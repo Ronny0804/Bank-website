@@ -22,7 +22,7 @@ const Accounts = () => {
             <li>Internert Banking access</li>
           </ul>
           <div className="btn-wrap">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHP3hiREqqSjD2GO9S_7YehSccfyaDFvd_hl90koT8zbMIjQ/viewform?usp=sf_link" className="btn-buy">Open Now</a>
+            <a href="#" className="btn-buy">Open Now</a>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ const Accounts = () => {
             <li>Bharat QR code</li>
           </ul>
           <div className="btn-wrap">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHP3hiREqqSjD2GO9S_7YehSccfyaDFvd_hl90koT8zbMIjQ/viewform?usp=sf_link" className="btn-buy">Open Now</a>
+            <a href="#" className="btn-buy">Open Now</a>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ const Accounts = () => {
             <li>No TDS</li>
           </ul>
           <div className="btn-wrap">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKCF80gHNPUEuc_UHzOxCHCmmTA7Dw5Bu4fR_7_0rt84DMog/viewform?usp=sf_link" className="btn-buy">Open Now</a>
+            <a href="#" className="btn-buy">Open Now</a>
           </div>
         </div>
       </div>

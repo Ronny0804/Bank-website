@@ -41,10 +41,11 @@ const App = (props) => {
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/user' element={<Users/>}/>
-        <Route path='/admin/shareholder' element={<Shareholder/>}/>
+        <Route path='/shareholder' element={<Shareholder/>}/>
         <Route path='/admin/users' element={<Admin/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/other' element={<Other/>}/>
+        
       </Routes>
     </Router>
   )

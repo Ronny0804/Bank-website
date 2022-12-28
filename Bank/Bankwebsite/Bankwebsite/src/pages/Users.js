@@ -5,7 +5,7 @@ import { AiFillEdit } from "react-icons/ai";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import Header from "../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logout } from "../actions/auth";
 import axios from "axios";
 import Message from "../components/Message";
@@ -19,13 +19,12 @@ const Users = () => {
   const [interest, setInterest] = useState("");
   const [install, setInstall] = useState("");
   const [id, setId] = useState(0);
-  
+  const [filterusersname, setFilterUsersName] = useState([])
   const[aadhaar,setAadhar] = useState("")
   const[aadharMsg,setAadharMsg] = useState("")
   const [showModal,setShowModal]=useState(false)
   const navigate = useNavigate()
   const user = useSelector(state=>state?.user?.user)
-  const [filterusersname, setFilterUsersName] = useState()
 
   const [selectusersname, setSelectUsersName] = useState(user?.name)
   console.log(selectusersname)
@@ -121,7 +120,7 @@ const Users = () => {
       .post(url, data)
       .then((res) => {
         console.log("filtered Names", res.data);
-        setFilterUsersName()
+        setFilterUsersName(res.data)
       })
       .catch((err) => {
         console.log("id + name fetch error: ", err);
@@ -160,36 +159,29 @@ encodedParams.append("uidnumber", aadhaar);
 
 const options = {
   method: 'POST',
- 
+  url: 'https://aadhaar-number-verification.p.rapidapi.com/Uidverifywebsvcv1/UidVerifyEmailMobile',
+  headers: {
+    'content-type': 'application/x-www-form-urlencoded',
+    'X-RapidAPI-Key': 'a0acf7f809mshead176800857567p1a0aa8jsnd6af08650937',
+    'X-RapidAPI-Host': 'aadhaar-number-verification.p.rapidapi.com'
+  },
   data: encodedParams
 };
     
     function aadharVerify(){
-      const options = {
-        method: 'POST',
-        url: 'https://pan-card-verification1.p.rapidapi.com/v3/tasks/sync/verify_with_source/ind_pan',
-        headers: {
-          'content-type': 'application/json',
-          'X-RapidAPI-Key': '007c1fdcb9mshf98488941b6af3ep14593bjsn5e57616cebd8',
-          'X-RapidAPI-Host': 'pan-card-verification1.p.rapidapi.com'
-        },
-        data: `{"task_id":"74f4c926-250c-43ca-9c53-453e87ceacd1","group_id":"8e16424a-58fc-4ba4-ab20-5bc8e7c3c41e","data":{"id_number":"${aadhaar}"}}`
-      };
-
-      axios.request(options).then(function (response) {
-       setAadharMsg(response.data.status)
-       setShowModal(true)
-      }).catch(function (error) {
-        console.error(error);
-        setAadharMsg("failed")
-        setShowModal(true)
-      });
+        axios.request(options).then(function (response) {
+          console.log(response?.data?.Succeeded?.Verify_status)
+            setAadharMsg(response?.data?.Succeeded?.Verify_status);
+            setShowModal(true)
+        }).catch(function (error) {
+            console.error(error);
+        });
     }
   return (
     <>
     <Header />
-      {user!==null?(<div className="container"  style={{marginTop:"7rem"}}>
-        <div className="my-5 d-flex justify-content-between align-items-center">
+      <div className="container my-5">
+        <div className="my-5 d-flex justify-content-start align-items-between">
         <ReactHTMLTableToExcel
           id="test-table-xls-button"
           className="download-table-xls-button btn btn-success my-5"
@@ -199,13 +191,10 @@ const options = {
           buttonText="Download as XLS"
         />
 
-
-        
-
         <button onClick={()=>{
           dispatch(logout())
            navigate("/")
-          }} style={{marginLeft:"10px"}}>logout</button>
+          }}>logout</button>
         {/* add  new entry section starts here */}
         {/* <button
           className=" ms-3"
@@ -229,15 +218,20 @@ const options = {
                     value={selectusersname}
                     onChange={(e) => setSelectUsersName(e.target.value)}
                   >
-                    
-                        <option value={user?.name}>{user?.name}</option>
-                    
+                    {filterusersname.map((val,key)=>{
+                      return (
+                        <>
+                        <option value={val.name}>{val.name}</option>
+                        
+                        </>
+                      )
+                    })}
                     
                   </select>
                   <button className="btn btn-primary ms-3" onClick={searchFilterName}>SEARCH</button>
         </div>
-        <input style={{margin:"0px 10px"}} type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" onChange={(e)=>{setAadhar(e.target.value)}}/>
-        <button  className="btn btn-success my-5 " style={{width: '300px', height: '50px'}} onClick={aadharVerify}>Verify PAN</button>
+        <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" onChange={(e)=>{setAadhar(e.target.value)}}/>
+        <button className="btn btn-success" onClick={aadharVerify}>Verify Aadhar</button>
         </div>
         <div
           class="modal fade"
@@ -415,7 +409,35 @@ const options = {
                     <td>{data.install}</td>
 
                     <td className="d-flex justify-content-evenly align-items-center">
-                      
+                      <button
+                        className="btn btn-warning"
+                        data-bs-toggle="modal"
+                        disabled
+                        data-bs-target="#exampleModal"
+                        onClick={() => {
+                          setId(data.id)
+                          setUserName(data.name);
+                          setMonth(data.month);
+                          setYear(data.year);
+                          setBalance(data.balance);
+                          setDeduction(data.deduction);
+                          setInterest(data.interest);
+                          setInstall(data.install);
+                        }}
+                      >
+                        <AiFillEdit color="black" size="20" />
+                        SHOW DETAILS
+                      </button>
+                      <button
+                        type="button"
+                        disabled
+                        class="btn btn-danger"
+                        onClick={() => {
+                          deleteData(data.id);
+                        }}
+                      >
+                        DELETE
+                      </button>
                       <div
                         class="modal fade"
                         id="exampleModal"
@@ -584,9 +606,7 @@ const options = {
             })}
           </tbody>
         </table>
-      </div>):(
-        <h1 style={{marginTop:"10rem",textAlign:"center"}}>Please Login first <Link to="/login">Login</Link></h1>
-      )}
+      </div>
 
       {showModal&&<Message msg={aadharMsg} showModal={showModal} type={"success"} closeModal={setShowModal} />}
     </>

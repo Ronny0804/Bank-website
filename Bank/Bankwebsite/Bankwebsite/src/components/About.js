@@ -58,8 +58,8 @@ const About = () => {
           </ul>
           <p>
           Rajaram Solvex Co-operative Credit Society Ltd. is registered under Maharashtra Co-operative Society Act 1960, established on 2nd September 1978.
-          <br/> The Rajaram Solvex Limited is the local financial organization of Islampur. This organization mainly provides loans for local people including factory workers, farmers, and employees. This Financial Organization has 250 - 300 active accounts and shareholders.
-          <br/>The organization provides financial services like Providing Safe Deposite Schemes, providing effective service of loan(Loans are offered to suit every individual's requirement based on their earnings, securities and repayment capacity) and providing the shares for the shareholders.   
+          <br/> To assist people in the society during their financial crisis, Mr. Vishwanath Govindrao Pawar came forth with a resolution – Rajaram Solvex Co-operative Credit Society Ltd., which was founded with 300 members and Rs. 13000 Share Capital.
+          <br/>On 9th July 2002, Founder Director Mr. V. G. Pawar and Chairman Mr. J. S. Pawar were assigned as Chief of Management for one of the Pathsanstha by Commissioner of Co-operative Department, Pune.
           </p>
         </div>
       </div>

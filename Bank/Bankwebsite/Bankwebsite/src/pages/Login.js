@@ -34,7 +34,7 @@ console.log(props)
     const handleLogin=(data)=>{
         setLoading(true)
         props.login(data.email,data.password,setLoading,navigate)
-        if(props.loginErr===null)navigate("/")
+        navigate("/")
     }
 
     console.log(props)
@@ -46,8 +46,7 @@ console.log(props)
         <div className="signup">
             <form onSubmit={handleSubmit(handleLogin)}>
                 <h2>Login</h2>
-                {props.loginErr&&<div className="err-msg">{props.loginErr?.code==="auth/user-not-found"?"email dose not exits":"Wrong email or password"}</div>}
-                {props?.errMsg&&<div style={{background:"red", color:"white",padding:"10px"}} className="err-msg">{props?.errMsg.code==='auth/user-not-found'?'The email account does not exist':'Inccorect Email or Password'}</div>}
+                {props?.errMsg&&<div className="err-msg">{props?.errMsg.code==='auth/user-not-found'?'The email account does not exist':'Inccorect Email or Password'}</div>}
               <div className="inputs login">
                   <input type="email" placeholder="Email" name="email" {...register('email', { required: true })}/>
                   {errors&&<p className="err">{errors?.email?.message}</p>}
@@ -69,6 +68,6 @@ console.log(props)
 
 const mapStateToProps=(state)=>{
     console.log(state)
-    return{errMsg:state?.user.err,loginErr:state?.err}
+    return{errMsg:state?.user.err}
 }
 export default connect(mapStateToProps,{login})(Login)

@@ -28,7 +28,7 @@ const Foooter = () => {
         <div className="col-lg-2 col-md-6 footer-links">
           <h4>Customer corner</h4>
           <ul>
-           
+            <li><i className="bx bx-chevron-right" /> <a href="#">News Coverage</a></li>
             <li><i className="bx bx-chevron-right" /> <a href="#">About us</a></li>
             <li><i className="bx bx-chevron-right" /> <a href="#">Customer Care</a></li>
             <li><i className="bx bx-chevron-right" /> <a href="#">Terms of service</a></li>
@@ -39,7 +39,7 @@ const Foooter = () => {
           <h4>Shareholder Corner</h4>
           <ul>
             <li><i className="bx bx-chevron-right" /> <a href="#">Overview</a></li>
-            
+            <li><i className="bx bx-chevron-right" /> <a href="#">Stock Exchanges</a></li>
             <li><i className="bx bx-chevron-right" /> <a href="#">Annual Reports</a></li>
             <li><i className="bx bx-chevron-right" /> <a href="#">Marketing</a></li>
             <li><i className="bx bx-chevron-right" /> <a href="#">financial Reports</a></li>
@@ -48,7 +48,8 @@ const Foooter = () => {
         <div className="col-lg-3 col-md-6 footer-links">
           <h4>Our Resources</h4>
           <ul>
-            
+            <li><i className="bx bx-chevron-right" /> <a href="#">E-auction</a></li>
+            <li><i className="bx bx-chevron-right" /> <a href="#">Tenders</a></li>
             <li><i className="bx bx-chevron-right" /> <a href="#">Interest Rate</a></li>
             <li><i className="bx bx-chevron-right" /> <a href="#">Service Charges</a></li>
             <li><i className="bx bx-chevron-right" /> <a href="#">FAQs</a></li>
