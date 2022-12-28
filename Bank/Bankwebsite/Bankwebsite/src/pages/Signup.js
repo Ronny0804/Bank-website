@@ -34,7 +34,7 @@ const Signup = (props) => {
     const handleSignup=(data)=>{
         setLoading(true)
         props.signUp(data.name,data.email,data.password,setLoading,navigate)
-        navigate("/")
+        if(props.user?.user!==null)navigate("/")
     }
 // console.log(props)
     return (
@@ -71,7 +71,7 @@ const Signup = (props) => {
 }
 
 const mapStateToProps=(state)=>{
-    return{errMsg:state?.user.err}
+    return{errMsg:state?.user.err,user:state.user}
 }
 
 export default connect(mapStateToProps,{signUp})(Signup)

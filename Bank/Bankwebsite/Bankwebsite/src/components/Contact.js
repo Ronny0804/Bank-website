@@ -10,7 +10,8 @@ const Contact = () => {
       <p>Contact Us</p>
     </div>
     <div>
-      <iframe style={{border: 0, width: '100%', height: 270}} src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameBorder={0} allowFullScreen />
+    
+      <iframe style={{border: 0, width: '100%', height: 270}} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3814.185760243306!2d74.28105431480658!3d17.06356398827345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc174c4124484bd%3A0x35d1cbf0672b3f50!2sRajarambapu%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1671729375722!5m2!1sen!2sin" frameBorder={0} allowFullScreen />
     </div>
     <div className="row mt-5">
       <div className="col-lg-4">
@@ -18,7 +19,8 @@ const Contact = () => {
           <div className="address">
             <i className="bi bi-geo-alt" />
             <h4>Location:</h4>
-            <p>A108 Adam Street, New York, NY 535022</p>
+            <p>ABC Rajaramnagar
+Sangli 415414, MH</p>
           </div>
           <div className="email">
             <i className="bi bi-envelope" />

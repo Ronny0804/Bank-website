@@ -5,7 +5,7 @@ import { AiFillEdit } from "react-icons/ai";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import Header from "../components/Header";
 import { useSelector } from "react-redux";
-const axios = require("axios");
+import axios from "axios";
 const Shareholder = () => {
   const [finalData, setFinalData] = useState([]);
   const [userName, setUserName] = useState("");
@@ -42,6 +42,7 @@ const Shareholder = () => {
       .post(url, data)
       .then((res) => {
         console.log("success");
+        fetchSupplierList()
       })
       .catch((err) => {
         console.log("error", err);
@@ -95,6 +96,7 @@ const Shareholder = () => {
     setTotal("");
     setNewShares("");
     setNetTotal("");
+    fetchSupplierList();
   };
 
   const filterName = () => {
@@ -276,9 +278,9 @@ const Shareholder = () => {
                     <td>{data.shareholder_name}</td>
                     <td>{data.share_amount}</td>
                     <td>{data.cash_deposit}</td>
-                    <td>{data.total}</td>
+                    <td>{parseInt(data.share_amount) + parseInt(data.cash_deposit)}</td>
                     <td>{data.new_shares}</td>
-                    <td>{data.nettotal}</td>
+                    <td>{parseInt(data.share_amount) + parseInt(data.cash_deposit) + parseInt(data.new_shares)}</td>
 
                     <td className="d-flex justify-content-evenly align-items-center">
                       <button
