@@ -15,8 +15,9 @@ button{
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border: none;
-    width: 100px;
-    max-width: 200px;
+  
+   width: 150px;
+   height: 55px;
     box-shadow: 0 1px 5px #0a032b61;
 }
 section {
